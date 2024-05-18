@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Handlexa</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+
+	<!-- Sidebar -->
+	<section id="sidebar">
+		<div class="inner">
+			<nav>
+				<ul>
+					<li><a href="#intro">Welcome</a></li>
+					<li><a href="#two">What we do</a></li>
+					<li><a href="#one">Technology</a></li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Intro -->
+		<section id="intro" class="wrapper style1 fullscreen fade-up">
+			<div class="inner">
+				<h1>Handlexa</h1>
+				<p>HandLexa employs machine learning methodologies to convert webcam footage into comprehensible sign language. The following texts delineate the sequential steps HandLexa takes to translate an image into a cohesive word.</p>
+				<ul class="actions">
+					<li><a href="#one" class="button scrolly">Learn more</a></li>
+				</ul>
+			</div>
+		</section>
+<!-- Two -->
+<section id="two" class="wrapper style3 fade-up">
+	<div class="inner">
+		<h2>What we do</h2>
+		<p>HandLexa is an innovative system that leverages advanced machine learning techniques and computer vision to translate sign language from webcam footage into comprehensible English words in real-time. The process begins with an OpenCV pipeline that preprocesses images by converting them to grayscale, applying adaptive thresholding, and converting them back to RGB format to highlight edges. A finely tuned convolutional neural network (CNN) based on MobileNet, enhanced with additional dense layers, classifies hand signs with high accuracy. A sophisticated algorithm then translates these classified signs into coherent words, dynamically adjusting the threshold for letter repetition based on model confidence. To ensure accuracy, an autocorrection feature refines the predicted words, which are finally vocalized using a browser-based text-to-speech API. This seamless integration of image processing, machine learning, and real-time adaptability makes HandLexa a powerful tool for interpreting sign language effectively.
+		</p>
+		<div class="features">
+			<section>
+				<span class="icon solid major fa-code"></span>
+				<h3>Image Processing with OpenCV</h3>
+				<p>The initial step involves converting webcam footage into a grayscale image, applying adaptive thresholding to highlight edges, and converting it back to an RGB format to prepare the image for further processing.</p>
+			</section>
+			<section>
+				<span class="icon solid major fa-lock"></span>
+				<h3>Machine Learning Model</h3>
+				<p>HandLexa uses a convolutional neural network (CNN) based on a pre-trained MobileNet model, with additional dense layers to classify hand signs in real-time while maintaining accuracy.</p>
+			</section>
+			<section>
+				<span class="icon solid major fa-cog"></span>
+				<h3>Letter to Word Translation</h3>
+				<p>A custom algorithm analyzes the sequence of detected letters. It adds a letter to the predicted word if it has been repeated a certain number of times, adjusting the threshold based on the model's confidence in recognizing different letters.</p>
+			</section>
+			<section>
+				<span class="icon solid major fa-desktop"></span>
+				<h3>Autocorrection and Text-to-Speech</h3>
+				<p>To enhance accuracy, an autocorrection feature refines the predicted word to the nearest English word. The final output is then converted to speech using the browser text-to-speech API.</p>
+			</section>
+		</div>
+		<ul class="actions">
+			<li><a href="us.html" class="button">Learn more</a></li>
+		</ul>
+	</div>
+</section>
+		<!-- One -->
+		<section id="one" class="wrapper style2 spotlights">
+			<section>
+				<a href="#" class="image"><img src="images/1.png" alt="" data-position="center center" /></a>
+				<div class="content">
+					<div class="inner">
+						<h2>OpenCV Pipeline</h2>
+						<p>The first step of the process to transform an image to a letter output is our OpenCV pipeline. This pipeline is written as the following:<br><br>
+							<code>
+								cv.cvtColor(img, result, cv.COLOR_BGR2GRAY);<br></code>
+								<code>
+								cv.adaptiveThreshold( result, result, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 21, 2 );<br></code>
+								<code>
+								cv.cvtColor(result, result, cv.COLOR_GRAY2RGB);
+							</code><br><br>
+							
+							The above pipeline simply performs an adaptive threshold on a grayscaled version on the image, highlighting its edges which make the image easier to process through the next step, the tensorflow model.</p>
+						<ul class="actions">
+							<li><a href="1.html" class="button">Learn more</a></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section>
+				<a href="#" class="image"><img src="images/2.png" alt="" data-position="top center" /></a>
+				<div class="content">
+					<div class="inner">
+						<h2>Tensorflow CNN</h2>
+						<p>After experimenting with various different model architectures, transfer learning from various different base convolutional neural network including vgg19, alexnet, and more, we settled on the architecture shown here, which both allowed the model to be run in real time as well as be fairly accurate. We took the output of a pre-trained convolutional neural network (mobile net) and added three dense layers to alter the output to classify hand signs.</p>
+						<ul class="actions">
+							<li><a href="2.html" class="button">Learn more</a></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section>
+				<a href="#" class="image"><img src="images/3.png" alt="" data-position="25% 25%" /></a>
+				<div class="content">
+					<div class="inner">
+						<h2>Interpreting The Results</h2>
+						<p>The Tensorflow CNN mentioned above only gave us a stream of outputs, which had to be translated into a readable english word / set of letters, as shown in the image. To accomplish this, we developed a small algorithm like the following: If the previous detected letter is different from the current detector letter, and the previous detected letter has been repeated at least x number of times, then add the previous letter to the running predicted word. However, the threshold x may change from letter to letter, and we had to experiment with different values of x: smaller values for letters which the model had trouble with, and larger values for letters which the model was more confident with. Then, when a space character is detected, we run autocorrection and text to speech as mentioned in the text below.</p>
+						<ul class="actions">
+							<li><a href="3.html" class="button">Learn more</a></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section>
+				<a href="#" class="image"><img src="images/4.png" alt="" data-position="25% 25%" /></a>
+				<div class="content">
+					<div class="inner">
+						<h2>Autocorrection And Text To Speech</h2>
+						<p>However, the letters output by the previous step were not always 100% perfect, which is why we included autocorrection. For the select times where the previous steps are not able to accurately translate a word, we use simple autocorrection to change it to the nearest english word. Additionally, we used the browser text to speech API to speak out loud the predicted word, allowing for even more use cases.</p>
+						<ul class="actions">
+							<li><a href="4.html" class="button">Learn more</a></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</section>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

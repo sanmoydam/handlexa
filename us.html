@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Handlexa</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript>
+			<link rel="stylesheet" href="assets/css/noscript.css" />
+		</noscript>
+	</head>
+	
+	<body class="is-preload">
+	
+		<!-- Wrapper -->
+		<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Our Goals</h1>
+
+<p>HandLexa stands at the forefront of innovation, blending cutting-edge machine learning techniques and computer vision to bridge the communication gap between sign language and spoken language. With its real-time translation capabilities, HandLexa offers a transformative solution for the deaf and hard of hearing community, empowering them to engage more fully in a world primarily built around spoken language. This comprehensive system integrates seamlessly across various technologies, from image processing with OpenCV to sophisticated machine learning models and intelligent translation algorithms. In this text, we delve into the intricate workings of HandLexa, exploring each component's role and how they synergistically contribute to its efficacy.</p>
+
+<h2>Image Processing with OpenCV</h2>
+
+<p>At the heart of HandLexa lies its robust image processing pipeline powered by OpenCV. The process commences by capturing webcam footage and converting it into a grayscale image. This initial transformation simplifies subsequent analysis by reducing the complexity of color information while retaining crucial structural details. Next, adaptive thresholding is applied to accentuate edges, enhancing the visibility of hand gestures against the background. This pivotal step significantly improves the accuracy of hand sign detection, laying the foundation for precise classification. Finally, the image is converted back to RGB format, ensuring compatibility with subsequent processing stages. Through meticulous preprocessing, HandLexa optimizes input data for the subsequent machine learning model, setting the stage for accurate interpretation of sign language gestures.</p>
+
+<h2>Machine Learning Model</h2>
+
+<p>HandLexa's machine learning prowess is epitomized by its utilization of a convolutional neural network (CNN) based on the renowned MobileNet architecture. Augmented with additional dense layers, this neural network is finely tuned to discern intricate hand gestures in real-time. The MobileNet framework, renowned for its efficiency and accuracy, serves as a robust foundation for HandLexa's classification tasks. By leveraging transfer learning, the model capitalizes on pre-existing knowledge, expediently adapting to the nuances of sign language interpretation. The incorporation of dense layers further enhances the model's capacity to extract meaningful features from input data, facilitating nuanced classification of diverse hand signs. Through continuous refinement and optimization, HandLexa's machine learning model achieves remarkable accuracy, laying the groundwork for precise translation of sign language gestures into comprehensible English words.</p>
+
+<h2>Letter to Word Translation</h2>
+
+<p>Central to HandLexa's translation process is its proprietary algorithm for converting detected hand signs into coherent English words. This algorithm meticulously analyzes the sequence of detected letters, discerning patterns and repetitions to construct meaningful words. A crucial aspect of this translation mechanism lies in its adaptability, dynamically adjusting the threshold for letter repetition based on the model's confidence in recognizing different letters. This dynamic thresholding mechanism ensures robustness across diverse sign language gestures, accommodating variations in speed and execution. Through iterative refinement, HandLexa's translation algorithm continually enhances its proficiency, enabling seamless conversion of sign language gestures into intelligible words.</p>
+
+<h2>Autocorrection and Text-to-Speech</h2>
+
+<p>In its pursuit of unparalleled accuracy, HandLexa integrates an autocorrection feature to refine predicted words, mitigating errors and enhancing overall coherence. This feature acts as a safeguard against misinterpretation, leveraging contextual cues and linguistic patterns to rectify inaccuracies. By aligning predicted words with the nearest English equivalents, HandLexa ensures clarity and precision in its translations, fostering seamless communication between sign language users and their counterparts. The culmination of HandLexa's translation process is the conversion of text into speech, facilitated by a browser-based text-to-speech API. This final step enables real-time vocalization of translated words, empowering users to convey their messages with clarity and confidence.</p>
+
+<h2>Conclusion</h2>
+
+<p>HandLexa emerges as a beacon of innovation, transcending traditional barriers to communication through its seamless integration of image processing, machine learning, and real-time adaptability. By harnessing the power of advanced technologies, HandLexa empowers individuals within the deaf and hard of hearing community to express themselves more effectively in a predominantly spoken language-centric world. As HandLexa continues to evolve and refine its capabilities, it holds the promise of fostering greater inclusivity and understanding, enriching the lives of countless individuals across the globe.</p>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
